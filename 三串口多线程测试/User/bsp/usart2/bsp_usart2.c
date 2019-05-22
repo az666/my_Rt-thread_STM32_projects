@@ -21,6 +21,7 @@
 
 /* 外部定义信号量控制块 */
 extern rt_sem_t test_sem2;
+extern rt_sem_t CSQ_sem;
 
  /**
   * @brief  配置嵌套向量中断控制器NVIC
@@ -147,7 +148,9 @@ void USART2_IRQHandler(void)
 
     {
         Uart2_DMA_Rx_Data();
-
+			if (strstr((char*)Usart2_Rx_Buf, "+CSQ:"))   //是否包含数据
+			rt_sem_release( CSQ_sem);  //回传信号量
+			
         USART_ReceiveData( USART2 ); // Clear IDLE interrupt flag bit
     }
 }
@@ -283,14 +286,30 @@ int NBiot_SendCmd(char* cmd, char* reply, int wait)
     }
     else if (strstr((char*)Usart2_Rx_Buf, "ERROR"))
     {
-      printf("ERROR...\r\n");
+      rt_kprintf("\r\n%s+++ERROR...\r\n",Usart2_Rx_Buf);
       return 0;
     }
     else
     {
-      printf("\r\n%s+++NO\r\n",Usart2_Rx_Buf);
+      rt_kprintf("\r\n%s+++NO\r\n",Usart2_Rx_Buf);
       return 0;
     }
  
+}
+
+/*
+NBiot初始化
+*/
+int NBiot_Init(void)  
+{
+    int ret = 0;
+    ret = NBiot_SendCmd("AT+ZRST","OK", 2000);  //复位并启动模组
+	  
+    if (!ret)
+    {
+        rt_kprintf("Cannot initialize NBIOT module");
+        return 0;
+    }
+    return ret;
 }
 

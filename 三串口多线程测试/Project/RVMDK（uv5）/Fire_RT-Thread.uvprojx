@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\bsp\usart;..\..\User\bsp\led;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\bsp\usart;..\..\User\bsp\Key;..\..\User\bsp\usart2;..\..\User\bsp\usart3</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\bsp\usart;..\..\User\bsp\led;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\bsp\usart;..\..\User\bsp\Key;..\..\User\bsp\usart2;..\..\User\bsp\usart3;..\..\User\bsp\exti</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -604,6 +604,11 @@
               <FileName>bsp_usart3.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\bsp\usart3\bsp_usart3.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\bsp\exti\bsp_exti.c</FilePath>
             </File>
           </Files>
         </Group>

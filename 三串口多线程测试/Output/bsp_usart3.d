@@ -8,6 +8,7 @@
 ..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
 ..\..\output\bsp_usart3.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_dma.h
+..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_exti.h
 ..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_flash.h
 ..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
 ..\..\output\bsp_usart3.o: ..\..\Libraries\FWlib\inc\stm32f10x_i2c.h

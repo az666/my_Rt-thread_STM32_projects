@@ -44,7 +44,7 @@
 #define  DEBUG_USART2                    USART2
 #define  DEBUG_USART2_CLK                RCC_APB1Periph_USART2
 #define  DEBUG_USART2_APBxClkCmd         RCC_APB1PeriphClockCmd
-#define  DEBUG_USART2_BAUDRATE           115200
+#define  DEBUG_USART2_BAUDRATE           9600
 
 // USART GPIO Òý½Åºê¶¨Òå
 #define  DEBUG_USART2_GPIO_CLK           (RCC_APB2Periph_GPIOA)
@@ -122,5 +122,6 @@ void Usart2_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
 void Usart2_SendString( USART_TypeDef * pUSARTx, char *str);
 void Usart2_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
 int NBiot_SendCmd(char* cmd, char* reply, int wait);
+int NBiot_Init(void);
 void Uart2_DMA_Rx_Data(void);
 #endif /* __USART_H */

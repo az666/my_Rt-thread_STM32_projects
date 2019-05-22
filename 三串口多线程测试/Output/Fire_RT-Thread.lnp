@@ -33,6 +33,7 @@
 "..\..\output\bsp_key.o"
 "..\..\output\bsp_usart2.o"
 "..\..\output\bsp_usart3.o"
+"..\..\output\bsp_exti.o"
 "..\..\output\clock.o"
 "..\..\output\components.o"
 "..\..\output\device.o"

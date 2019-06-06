@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QMUILayout">
+        ...
+        <attr name="qmui_bottomDividerHeight" format="dimension"/>
+        <attr name="qmui_bottomDividerColor" format="color|reference"/>
+        <attr name="qmui_bottomDividerInsetLeft" format="dimension"/>
+        <attr name="qmui_bottomDividerInsetRight" format="dimension"/>
+        <attr name="qmui_topDividerHeight" format="dimension"/>
+        <attr name="qmui_topDividerColor" format="color|reference"/>
+        <attr name="qmui_topDividerInsetLeft" format="dimension"/>
+        <attr name="qmui_topDividerInsetRight" format="dimension"/>
+        <attr name="qmui_leftDividerWidth" format="dimension"/>
+        <attr name="qmui_leftDividerColor" format="color|reference"/>
+        <attr name="qmui_leftDividerInsetTop" format="dimension"/>
+        <attr name="qmui_leftDividerInsetBottom" format="dimension"/>
+        <attr name="qmui_rightDividerWidth" format="dimension"/>
+        <attr name="qmui_rightDividerColor" format="color|reference"/>
+        <attr name="qmui_rightDividerInsetTop" format="dimension"/>
+        <attr name="qmui_rightDividerInsetBottom" format="dimension"/>
+        ...
+    </declare-styleable>
+
+</resources>

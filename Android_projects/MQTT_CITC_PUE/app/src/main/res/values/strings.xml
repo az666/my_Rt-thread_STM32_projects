@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">PUE监测</string>
+    <string name="navigation_drawer_open">打开导航栏</string>
+    <string name="navigation_drawer_close">关闭导航栏</string>
+    <string name="nav_header_title">WenZheng Design</string>
+    <string name="nav_header_subtitle">中原工学院机电151</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">退出</string>
+    <string name="ssid_title">账号: </string>
+    <string name="bssid_title">BSSID: </string>
+    <string name="password_title">密码: </string>
+    <string name="device_count_title">设备数量: </string>
+    <string name="package_broadcast">广播</string>
+    <string name="package_multicast">多播</string>
+    <string name="confirm">配置</string>
+    <string name="wifi_5g_message">智能设备暂不支持5G wifi，请切换至2.4G wifi环境。</string>
+    <string name="location_disable_message">GPS服务未开启</string>
+    <string name="version">EspTouch Version: %s</string>
+    <string-array name="names">
+        <item >碧沙岗东街区1号   偏角：20°倾角：16° 正常 </item>
+        <item >紫荆山区广播站    偏角： 6°倾角：15° 正常</item>
+        <item >二七纪念塔天线  偏角：10°倾角：21° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+        <item >中原区通讯天线        偏角： 5°倾角：19° 正常</item>
+    </string-array>
+    <string name="weixing">卫星地图</string>
+    <string name="sandi">3D立体图</string>
+</resources>
+
+

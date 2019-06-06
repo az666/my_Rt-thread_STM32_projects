@@ -306,7 +306,7 @@ ork --depend=..\..\output\context_rvds.d -o..\..\output\context_rvds.o -IF:\STM
 _32\STM32_RT_Thread\我的RT_Thread项目DEMO\my_Rt-thread_STM32_projects\毕业设计\
 Project\RVMDK（uv5）\RTE -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\
 Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predef
-ine="__UVISION_VERSION SETA 518" --predefine="STM32F10X_MD SETA 1" --list=..\..
+ine="__UVISION_VERSION SETA 518" --predefine="STM32F10X_HD SETA 1" --list=..\..
 \listing\context_rvds.lst ..\..\rtthread\3.0.3\libcpu\arm\cortex-m3\context_rvd
 s.S
 

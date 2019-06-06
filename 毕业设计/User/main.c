@@ -30,16 +30,18 @@ rt_sem_t CSQ_sem = RT_NULL;
  * 当我们在写应用程序的时候，可能需要用到一些全局变量。
  connected_IP(IP,Port,ID,User,Pwd);
  FE 04 00 00 00 01 25 C5
+ FE 04 00 01 00 01 74 05
  */
-char T_message[10],EC1_message[10];
+char T_message[10],H_message[10],EC1_message[10],EC2_message[10],ALL_message[100];
 unsigned char     TH[8] = {0x03, 0x03, 0x00, 0x00, 0x00, 0x02, 0xC5, 0xE9}; //温湿度传感器问询码
-unsigned char     EC_1[8] = {0xFE, 0x04, 0x00, 0x00, 0x00, 0x01, 0x25, 0xC5}; //温湿度传感器问询码
-char* ip = "47.105.157.158";
+unsigned char     EC_1[8] = {0xFE, 0x04, 0x00, 0x00, 0x00, 0x01, 0x25, 0xC5}; //电流采集器传感器问询码
+unsigned char     EC_2[8] = {0xFE, 0x04, 0x00, 0x01, 0x00, 0x01, 0x74, 0x05}; //电流采集器传感器问询码
+char* ip = "60.205.203.64";   //http://60.205.203.64
 char* port = "1883";
 char* id = "wenzheng";
 char* user = "root";
 char* passward = "citc2018";
-char* TOPIC = "/device/NB/wz_rt_thread_test"; //定义数据topic
+char* TOPIC = "wenzheng/PUE"; //定义数据topic
 int error_flag =0; //失败重连标志位
 int error_time =0; //失败的次数
 char *empty = "";
@@ -79,7 +81,9 @@ int main(void)
 	 * 即在component.c文件中的rtthread_startup()函数中完成了。
 	 * 所以在main函数中，只需要创建线程和启动线程即可。
 	 */
-  rt_kprintf("彭文正 RT-thread OS ！\n\n");
+  rt_kprintf("**基于NBIOT通讯协议的机房电流检测系统**\r\n");
+	rt_kprintf("操作系统：RT-thread OS \r\n");
+	rt_kprintf("MCU：STM32F103 \r\n");
 
 //*******************************************************************************//	
 		led1_thread =                          /* 线程控制块指针 */
@@ -157,7 +161,6 @@ static void led1_thread_entry(void* parameter)
         LED1_ON;
         rt_thread_delay(500);   /* 延时500个tick */
         //rt_kprintf("led1_thread running,LED1_ON\r\n");
-        
         LED1_OFF;     
         rt_thread_delay(500);   /* 延时500个tick */		 		
         //rt_kprintf("led1_thread running,LED1_OFF\r\n");
@@ -168,7 +171,6 @@ static void led1_thread_entry(void* parameter)
 static void usart2_thread_entry(void* parameter)
 {
   rt_err_t uwRet = RT_EOK;	
-	
     /* 任务都是一个无限循环，不能返回 */
 		NBiot_Init() ;
     connected_IP(ip,port,id,user,passward);
@@ -178,12 +180,11 @@ static void usart2_thread_entry(void* parameter)
 		uwRet = rt_sem_take(test_sem2,	/* 获取串口中断的信号量 */
                         0); 	  /* 等待时间：0 */
 		NBiot_SendCmd("AT+CSQ","OK", 1000);
-    send_MQTT(TOPIC,T_message);  
-		memset(T_message,0,sizeof(T_message));/* 清零 */
+    send_MQTT(TOPIC,ALL_message);  
+		memset(ALL_message,0,sizeof(ALL_message));/* 清零 */
 		rt_thread_delay(5000);
 //    if(RT_EOK == uwRet)
 //    {
-//			
 //			Usart2_SendString(USART2,"收到数据");
 //			Usart2_SendString(USART2,Usart2_Rx_Buf);
 //      memset(Usart2_Rx_Buf,0,USART2_RBUFF_SIZE);/* 清零 */
@@ -201,8 +202,10 @@ static void usart3_thread_entry(void* parameter)  //暂时用作显示屏
 		uwRet = rt_sem_take(CSQ_sem,	/* 获取串口中断的信号量 */
                         0); 	  /* 等待时间：0 */
 		sprintf(T_message, "%d", RS485_SendCmd(TH, sizeof(TH),9,3,100));
-		rt_thread_delay(200);
+		sprintf(H_message,"%d",RS485_SendCmd(TH, sizeof(TH),9,5,100));
 		sprintf(EC1_message, "%d", RS485_SendCmd(EC_1, sizeof(EC_1),7,3,100));
+		sprintf(EC2_message, "%d", RS485_SendCmd(EC_2, sizeof(EC_2),7,3,100));
+		sprintf(ALL_message,"%s%s%s%s%s%s%s%s","T:",T_message,"H:",H_message,"E1:",EC1_message,"E2:",EC2_message);
 //	rt_kprintf("收到数据！\n");
 //	rt_kprintf("T_M:%s\r\n",T_message);
 //	rt_kprintf("EC1:%s\r\n",EC1_message);
